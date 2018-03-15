@@ -1,0 +1,11 @@
+<div class="btn-group manage-area">
+    <a class="btn btn-bar {% if subpage == "Contacts" %} active {% endif %}" href="/cabinet/settings/">Contact information</a>
+    <a class="btn btn-bar {% if subpage == "Sequrity" %} active {% endif %}" href="/cabinet/settings/security/">Sequrity</a>
+</div>
+<hr class="margin-0">
+    {% if subpage == 'Contacts' %}
+        {% include 'cabinet/settings/content/contact.html' %}
+    {% elif subpage == 'Sequrity' %}
+        {% include 'cabinet/settings/content/security.html' %}
+    {% endif %}
+

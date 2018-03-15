@@ -1,0 +1,10 @@
+<div class="btn-group manage-area">
+    <a class="btn btn-bar {% if subpage == "Research" %} active {% endif %}" href="/cabinet">Research</a>
+    <a class="btn btn-bar {% if subpage == "CabinetNN" %} active {% endif %}" href="/cabinet/nn/">NN training</a>
+</div>
+<hr class="margin-0">
+    {% if subpage == 'Research'%}
+        {% include 'cabinet/profile/content/research.html' %}
+    {% elif subpage == 'CabinetNN' %}
+        {% include 'cabinet/profile/content/nn_list.html' %}
+    {% endif %}

@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'laboratory',
+    'cabinet',
 	'login',
     'signup',
     'how_to_start',

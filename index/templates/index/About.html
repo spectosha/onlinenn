@@ -2,13 +2,7 @@
 
 {% block content %}
 
-
-        {% if True %}
-            {% include "wrapper/headerout.html" %}
-        {% else %}
-            {% include "wrapper/headerin.html" %}
-        {% endif %}
-
+        {% include 'wrapper/in_or_out_header.html' %}
 
         <div class="container">
 			<div class="content">

@@ -22,4 +22,6 @@ urlpatterns = [
     path('how_to_start/', include('how_to_start.urls')),
     path('signup/', include('signup.urls')),
     path('login/', include('login.urls')),
+    path('cabinet/', include('cabinet.urls')),
+    path('laboratory/', include('laboratory.urls')),
 ]

@@ -1,0 +1,21 @@
+{% extends "wrapper/wrapp.html" %}
+
+{% block content %}
+
+    {% include 'wrapper/in_or_out_header.html' %}
+
+    <div class="container">
+        <div class="content">
+                <div class="btn-group manage-area">
+                    <a class="btn btn-bar {% if subpage == "Now" %} active {% endif %}" href="/laboratory/">Learning now</a>
+                    <a class="btn btn-bar {% if subpage == "Ended" %} active {% endif %}" href="/laboratory/ended/">Ended</a>
+                </div>
+            <hr class="margin-0">
+        {% if subpage == 'Now' %}
+            {% include 'laboratory/content/learning_now.html' %}
+        {% elif subpage == 'Ended' %}
+            {% include 'laboratory/content/ended.html' %}
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}

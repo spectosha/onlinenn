@@ -1,0 +1,43 @@
+{% extends "wrapper/wrapp.html" %}
+
+{% block content %}
+
+		<div class="container margin-40">
+			<div class="row">
+				<div class="col-lg-4"></div>
+				<div class="col-lg-4">
+					<div class="content">
+						<div class="content-padding">
+							<img class="image-max" src="/static/img/signup/logotip.png">
+							<form>
+								<div class="margin-10">
+									<input type="email" class="form-control" id="InputUsername" placeholder="Username">
+								</div>
+								<div class="margin-10">
+									<input type="email" class="form-control" id="InputEmail" placeholder="E-mail">
+								</div>
+								<div class="margin-10">
+									<input type="password" class="form-control" id="InputPassword" placeholder="Password">
+								</div>
+								<div class="margin-10">
+									<input type="password" class="form-control" id="InputPassword" placeholder="Password again">
+								</div>
+								<div class="center-container">
+									<a type="submit" class="btn btn-blue center-item button-sign" href="#">Sign up</a>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="content">
+						<div class="content-padding">
+							<div class="center-container">
+								<p class="label center-item">Have an account?</p>
+								<a type="submit" class="btn btn-white center-item button-sign" href="/login/">Log in</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4"></div>
+			</div>
+		</div>
+{% endblock %}

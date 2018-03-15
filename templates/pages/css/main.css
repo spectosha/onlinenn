@@ -19,7 +19,6 @@ h1, h2, h3, h4, h5, h6{
 
 h1{
 	margin:20px 0 10px 0;
-	padding: 0;
 }
 
 h4.headname{
@@ -38,13 +37,11 @@ h4.headname{
 p{
 	font-size: 20px;
 	text-indent: 30px;
-	margin: 0px;
+	margin: 0 15px 0 15px;
 }
 
-p.label{
-	margin: 0;
-	text-indent: 0px;
-	font-size: 20px;
+label{
+	font-size: 18px;
 }
 
 small{
@@ -101,7 +98,7 @@ a.white_link:hover{
 	color: #77be84;
 }
 
-ul.nav > li> a.active{
+ul.nav > .active{
 	color: #77be84 !important;
 }
 
@@ -145,7 +142,7 @@ a.blue_link:hover{
 }
 
 .btn-blue{
-	color: #fff !important;
+	color: #fff;
 	background-color: #4d59a1;
 	padding: 3px 30px 0px 30px;
 }

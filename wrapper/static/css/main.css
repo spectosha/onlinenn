@@ -98,7 +98,7 @@ a.white_link:hover{
 	color: #77be84;
 }
 
-ul.nav > .active{
+ul.nav > li> a.active{
 	color: #77be84 !important;
 }
 

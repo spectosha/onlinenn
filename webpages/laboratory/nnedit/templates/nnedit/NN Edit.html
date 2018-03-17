@@ -1,0 +1,57 @@
+{% extends "wrapper/wrapp.html" %}
+
+{% block content %}
+
+        {% include 'wrapper/in_or_out_header.html' %}
+
+    <div class="container">
+        <div class="content">
+            <div class="nn-loader" style="width:23%"></div>
+            <div class="content-padding">
+                <h2>Super resolution CNN</h2>
+                <!-- Следующий блок кода переделать под график обучения -->
+                <div class="margin-10">
+                    <div class="nn-graph-container" style="height:100px;"></div>
+                    <label>Progress: 23%</label>
+                    <label>Remain: 4 h</label>
+                </div>
+                <a class="btn btn-blue" href="/laboratory/" style="margin-right:15px">Edit model</a>
+                <a class="btn btn-white" href="/laboratory/" style="margin:0">Start training</a>
+
+                <div class="margin-10">
+                    <label>Load your training samples for learning</label>
+                    <div class="form-inline">
+                            <input type="email" class="form-control form-control-min" id="InputUsername" placeholder="super_resolution_samples.tbl">
+                            <a class="btn btn-white" href="/laboratory/" style="margin:0">Load samples</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="margin-10">
+                    <label>Export the weights in .h5p to your computer or import from that</label>
+                    <div class="form-inline">
+                            <a class="btn btn-white" href="/laboratory/" style="margin-right:15px;">Export weights</a>
+                            <a class="btn btn-white" href="/laboratory/">Import weights</a>
+                    </div>
+                </div>
+                <div class="margin-10">
+                    <label>Export your keras model in .json format on the computer or import that</label>
+                    <div class="form-inline">
+                            <a class="btn btn-white" href="/laboratory/" style="margin-right:15px;">Save model</a>
+                            <a class="btn btn-white" href="/laboratory/">Load model</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="margin-10">
+                    <label>Give the model a name or change it.</label>
+                    <div class="form-inline">
+                            <input type="email" class="form-control form-control-min" id="InputUsername" placeholder="Super resolution CNN">
+                            <a class="btn btn-white" href="/laboratory/" style="margin:0">Rename</a>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

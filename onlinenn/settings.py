@@ -31,13 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'laboratory',
-    'cabinet',
-	'login',
-    'signup',
-    'how_to_start',
-    'wrapper',
-    'index',
+    'webpages',
+    'webpages.laboratory.nnedit',
+    'webpages.laboratory',
+    'webpages.cabinet',
+	'webpages.login',
+    'webpages.signup',
+    'webpages.how_to_start',
+    'webpages.wrapper',
+    'webpages.index',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

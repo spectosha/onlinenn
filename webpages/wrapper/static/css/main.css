@@ -281,6 +281,7 @@ a.blue_link:hover{
 }
 
 .form-control{
+	margin:10px 0 10px 0;
 	border-radius: 2px;
 	box-shadow: none;
 	border: 1px solid rgba(0,0,0,0.25);
@@ -288,6 +289,12 @@ a.blue_link:hover{
 	height:32px;
 }
 
+.errorlist{
+	color:#c82333;
+	list-style-type: none;
+	margin:0px;
+	padding:0px;
+}
 
 .form-control:focus{
 	box-shadow: none;

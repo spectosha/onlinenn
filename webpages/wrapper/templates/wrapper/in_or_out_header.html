@@ -1,5 +1,5 @@
-{% if False %}
-    {% include "wrapper/headerout.html" %}
-{% else %}
+{% if request.user.is_authenticated %}
     {% include "wrapper/headerin.html" %}
+{% else %}
+    {% include "wrapper/headerout.html" %}
 {% endif %}

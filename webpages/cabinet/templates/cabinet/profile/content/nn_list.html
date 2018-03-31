@@ -3,79 +3,42 @@
         <h2>Learning now</h2>
         <div class="nn-rows">
             <div class="row">
-                <div class="col-lg-6">
-                    <a href="#" style="margin:0;">
-                        <div class="nn-container container-green">
-                            <div class="content-padding">
-                                <h4>Super resolution CNN</h4>
-                                <label>Looses: 12%</label>
-                                <label>Progress: 23%</label>
-                                <label>Remain: 9 hours</label>
-                            </div>
 
-                            <div class="nn-loader" style="width:23%"></div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-6">
-                    <a href="#" style="margin:0;">
-                        <div class="nn-container container-green">
-                            <div class="content-padding">
-                                <h4>InceptionNet V3</h4>
-                                <label>Looses: 3.4%</label>
-                                <label>Progress: 86%</label>
-                                <label>Remain: 1.2 hours</label>
+                {% for nn in nn_learning %}
+                    <div class="col-lg-6">
+                        <a href="#" style="margin:0;">
+                            <div class="nn-container container-green">
+                                <div class="content-padding">
+                                    <h4>{{ nn.name }}</h4>
+                                    <label>Looses: {{ nn.loosing }}%</label>
+                                    <label>Progress: {{ nn.progress }}%</label>
+                                    <label>Remain: {{ nn.remain }} hours</label>
+                                </div>
+                                <div class="nn-loader" style="width:{{ nn.progress }}%"></div>
                             </div>
+                        </a>
+                    </div>
+                {% endfor %}
 
-                            <div class="nn-loader" style="width:86%"></div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-6">
-                    <a href="#" style="margin:0;">
-                        <div class="nn-container container-green">
-                            <div class="content-padding">
-                                <h4>Convolution Yu-Net-50</h4>
-                                <label>Looses: 37%</label>
-                                <label>Progress: 58%</label>
-                                <label>Remain: 23 hours</label>
-                            </div>
-
-                            <div class="nn-loader" style="width:58%"></div>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
         <h2>Was ended</h2>
         <div class="nn-rows">
             <div class="row">
-                <div class="col-lg-6">
-                    <a href="#" style="margin:0;">
-                        <div class="nn-container container-blue">
-                            <div class="content-padding">
-                                <h4>Super resolution CNN</h4>
-                                <label>Looses: 12%</label>
-                                <label>Progress: 23%</label>
-                                <label>Remain: 9 hours</label>
-                            </div>
 
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-6">
-                    <a href="#" style="margin:0;">
-                        <div class="nn-container container-blue">
-                            <div class="content-padding">
-                                <h4>InceptionNet V3</h4>
-                                <label>Looses: 3.4%</label>
-                                <label>Progress: 86%</label>
-                                <label>Remain: 1.2 hours</label>
+                {% for nn in nn_ended %}
+                    <div class="col-lg-6">
+                        <a href="#" style="margin:0;">
+                            <div class="nn-container container-blue">
+                                <div class="content-padding">
+                                    <h4>{{ nn.name }}</h4>
+                                    <label>Looses: {{ nn.loosing }}%</label>
+                                </div>
                             </div>
+                        </a>
+                    </div>
+                {% endfor %}
 
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
     </div>

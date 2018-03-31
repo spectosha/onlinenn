@@ -1,0 +1,36 @@
+{% extends "wrapper/wrapp.html" %}
+
+{% block content %}
+
+        {% include 'wrapper/in_or_out_header.html' %}
+
+    <div class="container">
+        <div class="content">
+            <div class="nn-loader" style="width:{{ nn.progress }}%"></div>
+            <div class="content-padding">
+                <h2>{{ nn.name }}</h2>
+                <!-- Следующий блок кода переделать под график обучения -->
+                <div class="margin-10">
+                    <div class="nn-graph-container" style="height:100px;"></div>
+                    <label>Progress: {{ nn.progress }}%</label>
+                    <label>Remain: {{ nn.remain }}</label>
+                </div>
+                <a class="btn btn-blue" href="#" style="margin-right:15px">Edit model</a>
+                <a class="btn btn-white" href="True/" style="margin:0">Start training</a>
+                <hr>
+                <h3>Settings</h3>
+                    <form  action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <p class="label-big">{{ form.name.label }}</p>
+                        <input name="{{ form.name.html_name }}" placeholder="{{ nn.name }}" class="form-control-w margin-0" style="padding-left:10px" maxlength="{{ form.name.max_length }}" id="{{ form.name.id_for_label }}" type="text">
+                        <p class="label-big">{{ form.samples.label }}</p>
+                        {{ form.samples }}
+                        <br>
+                        <button type="submit" class="btn btn-blue margin-10">Save changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

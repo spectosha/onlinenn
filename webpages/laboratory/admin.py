@@ -1,3 +1,4 @@
 from django.contrib import admin
+from webpages.laboratory.nn.models import NN
 
-# Register your models here.
+admin.site.register(NN)

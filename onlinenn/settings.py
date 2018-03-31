@@ -12,6 +12,31 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+#celery
+
+import djcelery
+
+BROKER_URL = 'redis://127.0.0.1:6379/0'
+BROKER_HOST = "localhost"
+BROKER_BACKEND="redis"
+REDIS_PORT=6379
+REDIS_HOST = "localhost"
+BROKER_USER = ""
+BROKER_PASSWORD =""
+BROKER_VHOST = "0"
+REDIS_DB = 0
+REDIS_CONNECT_RETRY = True
+CELERY_SEND_EVENTS=True
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+CELERY_TASK_RESULT_EXPIRES =  10
+CELERYBEAT_SCHEDULER="djcelery.schedulers.DatabaseScheduler"
+CELERY_ALWAYS_EAGER=False
+
+djcelery.setup_loader()
+
+
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -33,7 +58,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts',
     'webpages',
-    'webpages.laboratory.nnedit',
+    'webpages.laboratory.nn',
     'webpages.laboratory',
     'webpages.cabinet',
 	'webpages.login',
@@ -47,6 +72,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djcelery',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +155,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+from django.core.files.storage import FileSystemStorage
+MEDIA_URL = '/media/'

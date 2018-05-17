@@ -1,6 +1,9 @@
 <div class="content-padding">
     <h2>Learning now</h2>
     <div class="nn-rows">
+    {% if len is True %}
+        <p>Nothing is learning</p>
+    {% endif %}
         {% for nn in nn_list%}
             <a href="/laboratory/nn/{{ nn.id }}/" style="margin:0;">
             <div class="nn-container container-green">

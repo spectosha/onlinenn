@@ -11,12 +11,18 @@
                 <h2>{{ nn.name }}</h2>
                 <!-- Следующий блок кода переделать под график обучения -->
                 <div class="margin-10">
-                    <div class="nn-graph-container" style="height:100px;"></div>
-                    <label>Progress: {{ nn.progress }}%</label>
-                    <label>Remain: {{ nn.remain }}</label>
+                    <div id="stage-container" class="nn-graph-container" style="height:100px;"></div>
+                    <label class="prog">Progress: {{ nn.progress }}%</label>
+                    <label class="loosing">Loose: {{ nn.loosing }} %</label>
                 </div>
-                <a class="btn btn-blue" href="#" style="margin-right:15px">Edit model</a>
-                <a class="btn btn-white" href="True/" style="margin:0">Start training</a>
+                <a class="btn btn-blue" href="/laboratory/nn/creating/{{ nn.id }}" style="margin-right:15px">Edit model</a>
+
+                {% if nn.complite == True %}
+                    <a class="btn btn-white" href="True/" style="margin:0">Start training</a>
+                {% else %}
+                    <a class="btn btn-white" href="/laboratory/nn/stop_training/{{ nn.id }}" style="margin:0; background-color: #eb4244">Stop training</a>
+                {% endif %}
+
                 <hr>
                 <h3>Settings</h3>
                     <form  action="" method="POST" enctype="multipart/form-data">
@@ -28,9 +34,101 @@
                         <br>
                         <button type="submit" class="btn btn-blue margin-10">Save changes</button>
                     </form>
+            {% if new == False %}
+                <hr>
+                <p class="label-big">You can download parameters of your model and use it for your own programs</p>
+                <a href="{{ nn.model.url }}" class="btn btn-blue margin-10">Keras json model</a>
+                <a href="{{ nn.weights.url }}" class="btn btn-blue margin-10">Weigths numpy</a>
+            {% endif %}
+                <hr>
+                <p class="label-big">Delete your model</p>
+                <a href="/laboratory/nn/delete/{{ nn.id }}/redirect/" class="btn btn-blue margin-10">Delete</a>
                 </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="/static/js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="/static/js/anychart-base.min.js"></script>
+    <script type="text/javascript">
+
+        var preloader = $('.nn-loader');
+        var progress = $('.prog');
+        var loosing = $('.loosing');
+
+            // create a stage
+        var stage = acgraph.create('stage-container');
+        var values = []
+
+        $.ajax({
+                 url: '/laboratory/nn/get_progress/{{ nn.id }}/',
+                 type: 'POST',
+                processData: false,
+                contentType: false,
+                 cache: true,
+                 success: function (response) {
+                     values[values.length] = 100;
+                     preloader.css('width', response.progress + '%');
+                     progress.text('Progress: ' + response.progress + ' %');
+                     loosing.text('Loosing: ' + response.loosing + ' %');
+                 }
+            })
+
+        var elem = document.getElementById("stage-container");
+            var w = elem.offsetWidth;
+            var h = elem.offsetHeight;
+
+        var req = function(){
+            console.log("update")
+
+            $.ajax({
+                 url: '/laboratory/nn/get_progress/{{ nn.id }}/',
+                 type: 'POST',
+                processData: false,
+                contentType: false,
+                 cache: true,
+                 success: function (response) {
+                     preloader.css('width', response.progress + '%');
+                     progress.text('Progress: ' + response.progress + ' %');
+                     loosing.text('Loosing: ' + response.loosing + ' %');
+
+                     if(values[values.length-1] != response.loosing){
+                        values[values.length] = response.loosing;
+                     }
+                 }
+            })
+
+            le = values.length;
+            background = stage.rect(0, 0, w, h);
+            background.fill('white');
+            background.stroke("#FFFFFF", "0");
+            pen = stage.path();
+            pen.stroke("#cccccc", "1");
+            for(var i = 1; i < 10; i++){
+              pen
+                  .moveTo(0, i*h/10)
+                  .lineTo(w, i*h/10)
+                  .close();
+              pen
+                  .moveTo(i*w/10, 0)
+                  .lineTo(i*w/10, h)
+                  .close();
+            }
+            pen_2 = stage.path();
+            pen_2.moveTo(0, i*h/10);
+            pen_2.stroke("#4d59a1", "1");
+
+            if(le!=0){
+              pen_2.moveTo(0, values[0]*h)
+            }
+            for(var i = 0; i < le; i++){
+              pen_2.lineTo(i*w/le,h - values[i]*h/100)
+              .moveTo(i*w/le,h - values[i]*h/100)
+            }
+            pen_2.close();
+        }
+
+        window.setInterval(req, 1000);
+
+    </script>
 
 {% endblock %}

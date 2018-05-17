@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flowchart</title>
+    <meta name="description" content="Interactive flowchart diagram implemented by GoJS in JavaScript for HTML." />
+    <!-- Copyright 1998-2018 by Northwoods Software Corporation. -->
+    <meta charset="UTF-8">
+	  
+	<link rel="stylesheet" href="/static/assets/css/jquery-ui.min.css" />
+	<script src="/static/assets/js/jquery.min.js"></script>
+	<script src="/static/assets/js/jquery-ui.min.js"></script>
+	
+	<style type="text/css">
+		.ui-accordion .ui-accordion-content {
+			padding: 1px;
+            height:483px;
+		}
+        .ui-accordion-header-active{
+            background-color: #4d59a1;
+            color:white;
+        }
+        .ui-accordion-header{
+            font-family: "Agency FB" !important;
+            height:20px;
+            vertical-align: text-top;
+            border-radius: 0;
+            border: 1px solid #ccc;
+        }
+        .win-element{
+            width: 100%; 
+            height: 483px;
+        }
+	</style>
+	  
+    <script src="/static/release/go.js"></script>
+    <script src="/static/assets/js/goSamples.js"></script>
+    <script id="code" src="/static/js/logic.js"></script>
+ 
+  </head>
+  <body onload="init()">
+    <div id="sample">
+      <div style="width: 100%; display: flex; justify-content: space-between;">
+		  <!--
+        <div id="myPaletteDiv" style="width: 300px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"></div>
+		  -->
+
+		<div style="width: 300px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black">
+			<div id="accordion">
+				<h4>Settings</h4>
+				<div>
+					<div id="Settings" class="win-element"></div>
+				</div>
+                <h4>Optimizers</h4>
+                <div>
+                    <div id="Optimizers" class="win-element"></div>
+                </div>
+				<h4>Core</h4>
+				<div>
+					<div id="Core" class="win-element"></div>
+				</div>
+				<h4>Convolutional</h4>
+				<div>
+					<div id="Convolutional" class="win-element"></div>
+				</div>
+				<h4>Pooling</h4>
+				<div>
+					<div id="Pooling" class="win-element"></div>
+				</div>
+				<h4>Locally-connected</h4>
+				<div>
+					<div id="Locally-connected" class="win-element"></div>
+				</div>
+				<h4>Merge</h4>
+				<div>
+					<div id="Merge" class="win-element"></div>
+				</div>
+				<h4>Normalization</h4>
+				<div>
+					<div id="Normalization" class="win-element"></div>
+				</div>
+				<h4>Noise</h4>
+				<div>
+					<div id="Noise" class="win-element"></div>
+				</div>
+			</div>
+		</div>
+        <div id="myDiagramDiv" style="flex-grow: 1; height: 720px; border: solid 1px black"></div>
+      </div>
+
+      
+      <button id="Save" onclick="save()">Save</button>
+      <button onclick="load()">Load</button>
+      Diagram Model saved in JSON format:
+        <form  action="redirect/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input name="{{ form.mySavedModel.html_name }}" value="{{ model }}" class="form-control-w margin-0" style=" visibility: visible;"  id="mySavedModel" type="text">
+            <button onclick="save()" type="submit" class="btn btn-blue margin-10">Save changes</button>
+        </form>
+    </div>
+  </body>
+</html>

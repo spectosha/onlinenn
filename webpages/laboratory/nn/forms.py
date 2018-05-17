@@ -16,11 +16,21 @@ class NnEditForm(forms.Form):
 
 	def is_valid(self):
 		valid = super(forms.Form, self).is_valid()
-		if not valid:
-			return valid
 
 		name = self.cleaned_data['name']
 		samples = self.cleaned_data['samples']
-		if name == '' and samples is None:
-			return False
+
+		#if name == '' and samples is None:
+		#	return False
 		return True
+
+class ModelEditForm(forms.Form):
+	mySavedModel = forms.CharField(required=None)
+
+	def clean(self, *args, **kwargs):
+		mySavedModel = self.cleaned_data.get('mySavedModel')
+		if mySavedModel == '':
+			forms.ValidationError('Error: Fill the fields')
+
+		return super(ModelEditForm, self).clean(*args, **kwargs)
+

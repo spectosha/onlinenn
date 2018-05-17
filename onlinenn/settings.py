@@ -34,6 +34,9 @@ CELERY_ALWAYS_EAGER=False
 
 djcelery.setup_loader()
 
+#start redis: redis-server
+#start celery: python manage.py celeryd
+#and then run django
 
 
 
@@ -156,5 +159,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-from django.core.files.storage import FileSystemStorage
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
